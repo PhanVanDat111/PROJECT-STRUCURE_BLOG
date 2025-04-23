@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flex Icon Right</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+    <link rel="stylesheet" href="./css/user_manager.css" />
+    <style>html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+      }
+    
+      .title {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 30px;
+        padding: 20px;
+        background-color: #f0f0f0;
+        height: 30px;
+       
+      }
+      .sidebar {
+      padding: 40px 20px;
+      width: 220px;
+    }
+
+    .menu-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background-color: #d6ecff;
+      color: #007bff;
+      padding: 10px 15px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .menu-btn:hover {
+      background-color: #cde4f9;
+    }
+
+    .menu-btn i {
+      color: orange;
+      font-size: 20px;
+      min-width: 24px;
+      text-align: center;
+    }
+    </style>
+</head>
+<body>
+  <div class="title">
+    <img src="./" alt="">
+    <i class="fa-regular fa-envelope"></i>
+    <i class="fa-regular fa-bell"></i>
+  </div>
+  <div class="sidebar">
+    <a href="#" class="menu-btn"><i class="fa-solid fa-user-gear"></i> Manage Users</a>
+    <a href="#" class="menu-btn"><i class="fa-solid fa-table-cells-large"></i> Manage Entries</a>
+    <a href="#" class="menu-btn"><i class="fa-solid fa-book-open"></i> Manage Article</a>
+    <a href="#" class="menu-btn"><i class="fa-solid fa-right-from-bracket"></i> Log out</a>
+  </div>
+
+</body>
+</html>
