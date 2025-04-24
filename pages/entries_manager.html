@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm bài viết</title>
+    <link rel="stylesheet" href="./css/entries_manager.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>+ Thêm bài viết</h1>
+        <form action="#" method="POST">
+            <label for="title">Tiêu đề:</label>
+            <input type="text" id="title" name="title" placeholder="Nhập tiêu đề bài viết">
+
+            <label for="category">Danh mục bài viết:</label>
+            <input type="text" id="category" name="category" placeholder="Chọn danh mục bài viết">
+
+            <label for="mood">Tâm trạng:</label>
+            <input type="text" id="mood" name="mood" placeholder="Chọn tâm trạng" value="🙂" disabled>
+
+            <label for="content">Nội dung:</label>
+            <textarea id="content" name="content" placeholder="Nhập nội dung bài viết"></textarea>
+
+            <div class="file-upload">
+                <label for="file"><i class="fa-solid fa-cloud-arrow-up"></i></label>
+                <p>Duyệt và chọn tệp bản muốn tải lên từ máy tính của bạn:</p>
+                <input type="file" id="file" name="file">
+            </div>
+            <div class="privacy">
+                <input type="radio" id="public" name="privacy" value="public">
+                <label for="public">Công khai</label>
+                <input type="radio" id="private" name="privacy" value="private">
+                <label for="private">Riêng tư</label>
+            </div>
+
+            <button type="submit" class="save-btn">Lưu</button>
+        </form>
+    </div>
+</body>
+</html>
