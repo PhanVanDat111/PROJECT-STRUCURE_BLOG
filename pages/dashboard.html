@@ -3,37 +3,84 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Flex Icon Right</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
-    <link rel="stylesheet" href="../css/dashboard.css" />
+  <title>Manage Categories</title>
+  <link rel="stylesheet" href="../css/dashboard.css" />
 </head>
 <body>
-  <div class="title">
-    <i class="fa-regular fa-envelope"></i>
-    <i class="fa-regular fa-bell"></i>
-    <div class="profile-dropdown">
-        <img src="../assets/anhchandung.jpg" alt="Profile" class="profile-img" id="profile-icon">
-        <div class="dropdown-content" id="dropdown-menu">
-          <p class="username">Rikkie</p>
-          <p class="email">rikkei@gmail.com</p>
+  <div class="container">
+    <aside class="sidebar">
+      <h2 class="logo">🔧 Manage</h2>
+      <div class="user-menu">
+        <img src="../assets/anhchandung.jpg" id="profile-icon" alt="User Avatar" class="avatar"/>
+        <div id="dropdown-menu" class="dropdown hidden">
+          <div class="dropdown-header">
+            <img src="../assets/anhchandung.jpg" alt="Avatar" />
+            <div>
+              <strong>Rikkei</strong><br/>
+              <small>Phanvandat@gmail.com</small>
+            </div>
+          </div>
           <a href="#">View profile</a>
           <a href="#">Update profile picture</a>
           <a href="#">Change password</a>
           <a href="#">Log out</a>
         </div>
+      </div>
+          
+      <nav>
+        <a href="http://127.0.0.1:5500/pages/user_manager.html">👤 Users</a>
+        <a href="http://127.0.0.1:5500/pages/entries_manager.html">📋 Manage Entries</a>
+        <a href="http://127.0.0.1:5500/pages/article_manager.html">📄 Manage Articles</a>
+        <a href="http://127.0.0.1:5500/pages/login.html" class="logout">🚪 Log out</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="search-bar">
+        <input type="text" placeholder="Search Article Categories" />
+      </div>
+
+      <section class="category-management">
+        <h1>⚙️ Manage Categories</h1>
+        <div class="form-group">
+          <label for="categoryName">Category Name</label>
+          <input type="text" id="categoryName" placeholder="Enter category name" />
+          <button class="add-btn">Add Category</button>
+        </div>
+
+        <div class="category-list">
+          <h2>📋 Category List</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Category Name</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Ancatagor</td>
+                <td>
+                  <button class="action-btn">✏️</button>
+                  <button class="action-btn">🗑️</button>
+                </td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Another Category</td>
+                <td>
+                  <button class="action-btn">✏️</button>
+                  <button class="action-btn">🗑️</button>
+                </td>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
   </div>
-</div>
-  <div class="search">
-    <input type="text" placeholder="Search"/>
-    <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-    
-  </div>
-  <div class="sidebar">
-    <a href="http://127.0.0.1:5500/pages/user_manager.html" class="menu-btn"><i class="fa-solid fa-user-gear"></i> Manage Users</a>
-    <a href="http://127.0.0.1:5500/pages/entries_manager.html" class="menu-btn"><i class="fa-solid fa-table-cells-large"></i> Manage Entries</a>
-    <a href="http://127.0.0.1:5500/pages/article_manager.html" class="menu-btn"><i class="fa-solid fa-book-open"></i> Manage Article</a>
-    <a href="http://127.0.0.1:5500/pages/login.html" class="menu-btn"><i class="fa-solid fa-right-from-bracket"></i> Log out</a>
-  </div>
-<script src="../js/dashboard.js"></script>
+  <script src="../js/dashboard.js"></script>
 </body>
+
 </html>

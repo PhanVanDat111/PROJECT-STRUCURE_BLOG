@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Management</title>
+  <link rel="stylesheet" href="../css/user_manager.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Team members</h1>
+      <div class="search-add">
+        <input type="text" id="search" placeholder="Search user" />
+        <button id="addUser">+ Add User</button>
+        <img src="../assets/anhchandung.jpg" id="profile-icon" alt="User Avatar" class="avatar"/>
+        <div id="dropdown-menu" class="dropdown hidden">
+          <div class="dropdown-header">
+            <img src="../assets/anhchandung.jpg" alt="Avatar" />
+            <div>
+              <strong>Rikkei</strong><br/>
+              <small>Phanvandat@gmail.com</small>
+            </div>
+          </div>
+          <a href="#">View profile</a>
+          <a href="#">Update profile picture</a>
+          <a href="#">Change password</a>
+          <a href="#">Log out</a>
+        </div>
+      </div>
+    </header>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Status</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="userTable"></tbody>
+    </table>
+
+    <div class="pagination" id="pagination"></div>
+  </div>
+
+  <script src="../js/user_manager.js"></script>
+</body>
+</html>
