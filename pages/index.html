@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rikkei Blog</title>
+  <link rel="stylesheet" href="../css/index.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <i class="fa-solid fa-book"></i>
+      <span>RIKKEI_EDU_BLOG</span>
+    </div>
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search for articles">
+      <button class="search-btn" onclick="searchPosts()">
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+    <div class="auth-buttons">
+      <button class="btn-signup">Sign Up</button>
+      <button class="btn-signin">Sign In</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <h2>Recent Blog Posts</h2>
+    <div class="blog-grid" id="blogGrid">
+      <!-- Cards sẽ được tạo động bởi JavaScript -->
+    </div>
+  </main>
+  
+  <script src="../js/index.js"></script>
+</body>
+</html>
+  
