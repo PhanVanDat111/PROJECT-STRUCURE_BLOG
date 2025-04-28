@@ -150,4 +150,153 @@
     background-color: #d1fae5;
     color: #047857;
   }
+  .footer {
+    background-color: #fff;
+    padding: 40px 20px;
+    border-top: 1px solid #eee;
+  }
   
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .footer-column {
+    flex: 1 1 220px;
+    margin: 10px;
+  }
+  
+  .footer-column h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #111;
+  }
+  
+  .footer-column h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .footer-column p {
+    font-size: 14px;
+    color: #777;
+    line-height: 1.6;
+  }
+  
+  .footer-column ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-column ul li {
+    margin-bottom: 8px;
+  }
+  
+  .footer-column ul li a {
+    text-decoration: none;
+    color: #555;
+    font-size: 14px;
+  }
+  
+  .footer-column ul li a:hover {
+    color: #000;
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  .footer-bottom a {
+    margin: 0 10px;
+    color: #555;
+    font-size: 18px;
+    text-decoration: none;
+  }
+  
+  .footer-bottom a:hover {
+    color: #000;
+  }
+  /* Global Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+/* Post Container */
+.post-container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.post-header {
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.post-header h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.post-header .post-date {
+  color: #666;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Comments Section */
+.comments-section {
+  margin-top: 20px;
+}
+
+.comments-section h2 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Comment Styles */
+.comment {
+  margin-bottom: 15px;
+  padding: 15px;
+  background-color: #fafafa;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment-author {
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+}
+
+.comment-likes, .comment-replies {
+  font-size: 14px;
+  color: #888;
+}
+
+.comment-likes:hover, .comment-replies:hover {
+  cursor: pointer;
+  color: #555;
+}
+

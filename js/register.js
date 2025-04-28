@@ -1,7 +1,5 @@
 // Lưu tài khoản đăng ký vào LocalStorage
 function signUp() {
-    console.log(("tyhrgfdvc"));
-    
     const firstname = document.getElementById('Firstname-signup').value.trim();
     const lastname = document.getElementById('Lastname-sigup').value.trim();
     const username = document.getElementById('email-signup').value.trim();
@@ -17,7 +15,18 @@ function signUp() {
       alert("Mật Khâu không khớp. Vui lòng kiểm tra lại.");
       return;
     }
+    
+        // Create new user object
+        const newUser = { firstName: firstname, lastName: lastname, email: username, password: password };
+
+        // Get existing users from localStorage or initialize an empty array
+        let users = JSON.parse(localStorage.getItem('users')) || [];
   
+        // Add the new user to the users array
+        users.push(newUser);
+  
+        // Save the updated users array back to localStorage
+        localStorage.setItem('users', JSON.stringify(users));
     // Lưu dữ liệu vào LocalStorage
     localStorage.setItem('firstname', firstname);
     localStorage.setItem('lastname', lastname);
