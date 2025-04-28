@@ -4,28 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login Page</title>
-<link rel="stylesheet" href="../css/login.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
-  <div class="picture">
-  <img src="../assets/images/backgroud-login.jpg" alt="">
-  </div>
-  <div class="login-container">
-    <h2>LOGIN HERE</h2>
-    <div class="input-group">
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" placeholder="Enter your email" required>
-    </div>
-    <div class="input-group">
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" placeholder="Enter your password"required>
-    </div>
-    <button class="login-btn">LOGIN</button>
-    <div class="extra-links">
-      <p><a href="http://127.0.0.1:5500/pages/login.html">Forgot password?</a></p>
-      <p>To Register New Account → <a href="#">Click Here</a></p>
-    </div>
-  </div>
 
+<div class="background">
+  <div class="overlay"></div>
+  
+  <div class="form-container">
+    <h2>Login</h2>
+    <form>
+      <input id="email-login" type="email" placeholder="Email address" required>
+      <input id="password-login" type="password" placeholder="Password" required>
+      <button id="login-btn" onclick="login();"  type="submit">Log In</button>
+    </form>
+    <div class="link">
+      Don't have an account? <a href="#">Sign Up</a>
+    </div>
+  </div>
+  
+</div>
+  <script src="../js/login.js"></script>
 </body>
 </html>
