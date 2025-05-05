@@ -1,15 +1,23 @@
-// Dữ liệu sản phẩm mẫu
-const products = [
-  { id: 1, image: 'image1.jpg', title: 'Học nấu cá sấu cà chua', category: 'Nấu ăn', content: 'Tôi đã học được cách nấu cá sấu...', status: 'Public' },
-  { id: 2, image: 'image2.jpg', title: 'Bi kip viết CV ngành IT', category: 'IT', content: 'Chia sẻ cách viết CV ấn tượng...', status: 'Private' },
-  { id: 3, image: 'image3.jpg', title: 'Học Python cho người mới bắt đầu', category: 'IT', content: 'Bài học Python cơ bản...', status: 'Public' },
-  { id: 4, image: 'image4.jpg', title: 'Cách làm món ăn vặt', category: 'Nấu ăn', content: 'Cách làm các món ăn vặt nhanh...', status: 'Private' },
-  { id: 5, image: 'image5.jpg', title: 'Quản lý thời gian hiệu quả', category: 'IT', content: 'Hướng dẫn cách quản lý thời gian...', status: 'Public' },
-  // Thêm sản phẩm tại đây...
-];
+let products = JSON.parse(localStorage.getItem("products")) || [
+
+];let categories = JSON.parse(localStorage.getItem("categories")) || [];
+
+
+let selecteCategory = document.getElementById("productCategory");
+document.addEventListener('DOMContentLoaded', function () {
+  categories.forEach((category) => {
+    // Create option elements for each category
+    selecteCategory.innerHTML += `<option value="${category.id}">${category.name}</option>`;
+  });
+});
 
 let currentPage = 1;
 const itemsPerPage = 5;
+
+// Hàm lưu dữ liệu vào localStorage
+function saveToLocalStorage() {
+  localStorage.setItem("products", JSON.stringify(products));
+}
 
 // Hàm hiển thị sản phẩm
 function displayProducts() {
@@ -20,12 +28,13 @@ function displayProducts() {
   const tableBody = document.getElementById('post-table-body');
   tableBody.innerHTML = ''; // Xóa các dòng hiện tại
   
+  
   visibleProducts.forEach(product => {
     const row = document.createElement('tr');
     row.innerHTML = `
       <td><img src="${product.image}" alt="Ảnh bài viết" class="post-img"></td>
       <td>${product.title}</td>
-      <td>${product.category}</td>
+      <td>${categories.find(item => item.id === (product.category)).name}</td>
       <td>${product.content}</td>
       <td><span class="status ${product.status === 'Public' ? 'public' : 'private'}">${product.status}</span></td>
       <td><select class="status-select" onchange="changeStatus(${product.id}, this.value)">
@@ -49,6 +58,7 @@ function changeStatus(productId, newStatus) {
   const product = products.find(p => p.id === productId);
   if (product) {
     product.status = newStatus;
+    saveToLocalStorage();  // Lưu lại dữ liệu vào localStorage
     displayProducts(); // Hiển thị lại bảng
   }
 }
@@ -63,6 +73,7 @@ function deleteProduct(productId) {
   const productIndex = products.findIndex(p => p.id === productId);
   if (productIndex !== -1) {
     products.splice(productIndex, 1);
+    saveToLocalStorage();  // Lưu lại dữ liệu vào localStorage
     displayProducts(); // Hiển thị lại bảng
   }
 }
@@ -125,14 +136,15 @@ function saveNewProduct() {
     id: products.length + 1,
     image: image,
     title: title,
-    category: category,
+    category: parseInt(category),
     content: content,
     status: status
   };
 
   products.push(newProduct);
+  saveToLocalStorage();  // Lưu lại dữ liệu vào localStorage
   displayProducts(); // Hiển thị lại bảng và phân trang
   closeAddProductForm(); // Đóng form sau khi lưu sản phẩm
 }
 
-displayProducts();
+displayProducts(); // Hiển thị dữ liệu khi tải trang

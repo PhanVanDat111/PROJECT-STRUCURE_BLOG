@@ -36,24 +36,25 @@ h1 {
   cursor: pointer;
 }
 
-.add-post-btn:hover {
-  background-color: #0056b3;
-}
+
 
 /* Bảng danh sách sản phẩm */
 .post-table {
   width: 100%;
   border-collapse: collapse;
+  
 }
 
 .post-table th, .post-table td {
   padding: 12px;
   text-align: left;
+  
 }
 
 .post-table th {
-  background-color: #007bff;
-  color: white;
+  background-color: white;
+  color: #333;
+  
 }
 
 .post-table tr:nth-child(even) {
@@ -101,15 +102,18 @@ h1 {
 .edit-btn {
   background-color: #28a745;
   color: white;
+  border-radius: 10px;
 }
 
 .delete-btn {
   background-color: #dc3545;
   color: white;
+  border-radius: 10px;
 }
 
 .edit-btn:hover {
   background-color: #218838;
+  border-radius: 20px;
 }
 
 .delete-btn:hover {
@@ -135,11 +139,12 @@ h1 {
 
 /* Nút Previous và Next */
 button.previous-btn, button.next-btn {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
+  padding: 5px 10px;
+  background-color: white;
+  color: black;
+  border: 1px solid #ccc;
   cursor: pointer;
+  border-radius: 10px;
 }
 
 button.previous-btn:hover, button.next-btn:hover {
@@ -158,10 +163,11 @@ button.previous-btn:hover, button.next-btn:hover {
 /* Nút thêm sản phẩm */
 .add-post-btn {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color:purple;
   color: white;
   border: none;
   cursor: pointer;
+  border-radius: 10px;
 }
 
 .add-post-btn:hover {

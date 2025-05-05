@@ -17,7 +17,7 @@ function signUp() {
     }
     
         // Create new user object
-        const newUser = { firstName: firstname, lastName: lastname, email: username, password: password };
+        const newUser = { firstName: firstname, lastName: lastname, email: username, password: password, role : "user" };
 
         // Get existing users from localStorage or initialize an empty array
         let users = JSON.parse(localStorage.getItem('users')) || [];
@@ -28,10 +28,7 @@ function signUp() {
         // Save the updated users array back to localStorage
         localStorage.setItem('users', JSON.stringify(users));
     // Lưu dữ liệu vào LocalStorage
-    localStorage.setItem('firstname', firstname);
-    localStorage.setItem('lastname', lastname);
-    localStorage.setItem('username', username);
-    localStorage.setItem('password', password);
+
   
     alert("Sign up successful! Now please login.");
     location.href = "login.html";

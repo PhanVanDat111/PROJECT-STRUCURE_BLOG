@@ -10,34 +10,17 @@
   <div class="container">
     <aside class="sidebar">
       <h2 class="logo">🔧 Manage</h2>
-      <div class="user-menu">
-        <img src="../assets/anhchandung.jpg" id="profile-icon" alt="User Avatar" class="avatar"/>
-        <div id="dropdown-menu" class="dropdown hidden">
-          <div class="dropdown-header">
-            <img src="../assets/anhchandung.jpg" alt="Avatar" />
-            <div>
-              <strong>Rikkei</strong><br/>
-              <small>Phanvandat@gmail.com</small>
-            </div>
-          </div>
-          <a href="#">View profile</a>
-          <a href="#">Update profile picture</a>
-          <a href="#">Change password</a>
-          <a href="#">Log out</a>
-        </div>
-      </div>
-          
       <nav>
         <a href="http://127.0.0.1:5500/pages/user_manager.html">👤 Users</a>
         <a href="http://127.0.0.1:5500/pages/entries_manager.html">📋 Manage Entries</a>
         <a href="article_manager.html">📄 Manage Articles</a>
-        <a href="#" class="logout" onclick="logout()" >🚪 Log out</a>
+        <a href="#" class="logout" onclick="logout()">🚪 Log out</a>
       </nav>
     </aside>
 
     <main class="main-content">
       <div class="search-bar">
-        <input type="text" placeholder="Search Article Categories" />
+        <input type="text" id="search-input" placeholder="Search Article Categories" oninput="searchData()"/>
       </div>
 
       <section class="category-management">
@@ -45,7 +28,7 @@
         <div class="form-group">
           <label for="categoryName">Category Name</label>
           <input type="text" id="categoryName" placeholder="Enter category name" />
-          <button class="add-btn">Add Category</button>
+          <button class="add-btn" onclick="addCategory()">Add Category</button>
         </div>
 
         <div class="category-list">
@@ -58,15 +41,15 @@
                 <th>Actions</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
+            <tbody id="category-table-body">
+              <!-- Categories will be displayed here -->
             </tbody>
           </table>
         </div>
       </section>
     </main>
   </div>
+
   <script src="../js/entries_manager.js"></script>
 </body>
-
 </html>

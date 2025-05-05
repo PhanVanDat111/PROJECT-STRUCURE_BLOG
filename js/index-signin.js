@@ -105,10 +105,4 @@ document.addEventListener("click", function (e) {
   }
 });
 
-function logout() {
-  // Xoá token khỏi localStorage (nếu có)
-  localStorage.setItem('accessToken', token);
 
-  // Chuyển hướng về trang đăng nhập
-  window.location.href = '/login.html';
-}
