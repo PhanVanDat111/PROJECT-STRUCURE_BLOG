@@ -2,7 +2,8 @@ let profile = document.getElementById("profile-icon");
 let dropdownMenu = document.getElementById("dropdown-menu");
 
 // Toggle dropdown khi click avatar
-profile.addEventListener("click", function () {
+profile.addEventListener("click", function (e) {
+  e.stopPropagation(); // Ngừng sự kiện lan tỏa, để không đóng menu khi click vào avatar
   dropdownMenu.classList.toggle("hidden");
 });
 
@@ -13,19 +14,17 @@ document.addEventListener("click", function (e) {
   }
 });
 
-
 document.addEventListener('DOMContentLoaded', function () {
-  
-  const username = JSON.parse(localStorage.getItem('users')) || [];
+  const users = JSON.parse(localStorage.getItem('users')) || [];
 
-  // Display users in the table
+  // Hàm để hiển thị danh sách người dùng
   const userTable = document.getElementById('userTable');
   users.forEach(user => {
     const row = document.createElement('tr');
     row.innerHTML = `
-      <td>${username.firstName} ${username.lastName}</td>
+      <td>${user.firstName} ${user.lastName}</td>
       <td>Active</td>
-      <td>${username.email}</td>
+      <td>${user.email}</td>
       <td>
         <button onclick="deleteUser('${user.email}')">Delete</button>
       </td>
@@ -34,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-// Delete user from localStorage
+// hàm xóa người dùng
 function deleteUser(email) {
   let users = JSON.parse(localStorage.getItem('users')) || [];
   users = users.filter(user => user.email !== email); // Remove user by email

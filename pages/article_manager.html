@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,51 +7,63 @@
   <link rel="stylesheet" href="../css/article-manager.css">
 </head>
 <body>
-
   <div class="container">
     <header class="header">
-      <button class="btn-add" onclick="openForm()">+ Thêm mới bài viết</button>
       <h1>Quản lý bài viết</h1>
+      <button class="add-post-btn" onclick="showAddProductForm()">Thêm mới bài viết</button>
     </header>
-
-    <section class="post-management">
-      <table id="postTable">
-        <thead>
-          <tr>
-            <th>Ảnh</th>
-            <th>Tiêu đề</th>
-            <th>Chủ đề</th>
-            <th>Nội dung</th>
-            <th>Trạng thái</th>
-            <th>Chỉnh sửa trạng thái</th>
-            <th>Hành động</th>
-          </tr>
-        </thead>
-        <tbody id="postTableBody">
-          <!-- Các bài viết mặc định ban đầu -->
-          <tr>
-            <td><img src="../assets/images/anhnauan.jpg" alt="Ảnh bài viết"></td>
-            <td>Học nấu cá sốt cà chua</td>
-            <td>Nấu ăn</td>
-            <td>Tôi đã học được cách nấu ăn...</td>
-            <td><span class="badge badge-public">Public</span></td>
-            <td>
-              <select>
-                <option>Public</option>
-                <option>Private</option>
-              </select>
-            </td>
-            <td>
-              <button class="btn-edit">Sửa</button>
-              <button class="btn-delete" onclick="deleteRow(this)">Xóa</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
     
+    <!-- Form thêm sản phẩm -->
+    <div class="add-product-form" id="addProductForm">
+      <h2>Thêm Sản Phẩm Mới</h2>
+      <label for="productTitle">Tiêu đề:</label>
+      <input type="text" id="productTitle" required>
+
+      <label for="productCategory">Chủ đề:</label>
+      <input type="text" id="productCategory" required>
+
+      <label for="productContent">Nội dung:</label>
+      <textarea id="productContent" required></textarea>
+
+      <label for="productStatus">Trạng thái:</label>
+      <select id="productStatus" required>
+        <option value="Public">Public</option>
+        <option value="Private">Private</option>
+      </select>
+
+      <label for="productImage">Ảnh sản phẩm (URL):</label>
+      <input type="text" id="productImage" required>
+
+      <button class="save-btn" onclick="saveNewProduct()">Lưu</button>
+      <button class="cancel-btn" onclick="closeAddProductForm()">Hủy</button>
+    </div>
+
+    <!-- Bảng danh sách sản phẩm -->
+    <table class="post-table">
+      <thead>
+        <tr>
+          <th>Ảnh</th>
+          <th>Tiêu đề</th>
+          <th>Chủ đề</th>
+          <th>Nội dung</th>
+          <th>Trạng thái</th>
+          <th>Chỉnh sửa trạng thái</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tbody id="post-table-body">
+        <!-- Các sản phẩm sẽ được thêm động ở đây -->
+      </tbody>
+    </table>
+
+    <!-- Phân trang -->
+    <footer class="pagination">
+      <button class="previous-btn" onclick="changePage('prev')">Previous</button>
+      <div class="page-numbers" id="page-numbers"></div>
+      <button class="next-btn" onclick="changePage('next')">Next</button>
+    </footer>
   </div>
 
-<script src="../js/article_manager.js"></script>
+  <script src="../js/article_manager.js"></script>
 </body>
 </html>

@@ -438,3 +438,62 @@ body {
   filter: blur(5px);
   pointer-events: none;
 }
+
+.user-menu {
+
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.avatar:hover {
+  transform: scale(1.05);
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: 50px;
+  width: 220px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  overflow: hidden;
+  z-index: 100;
+  padding: 10px 0;
+}
+
+.dropdown.hidden {
+  display: none;
+}
+
+.dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.dropdown-header img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.dropdown a {
+  display: block;
+  padding: 10px 16px;
+  text-decoration: none;
+  color: #333;
+  transition: background 0.2s ease;
+}
+
+.dropdown a:hover {
+  background-color: #f9f9f9;
+}

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Rikkei Blog</title>
-  <link rel="stylesheet" href="../css/index.css" />
+  <link rel="stylesheet" href="../css/index-signin.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
@@ -19,16 +19,28 @@
         <i class="fa fa-search"></i>
       </button>
     </div>
-    <div class="auth-buttons">
-      <button class="btn-signup" > Sign Up</button>
-      <button class="btn-signin">Sign In</button>
+    <div class="user-menu">
+      <img src="../assets/anhchandung.jpg" id="profile-icon" alt="User Avatar" class="avatar"/>
+      <div id="dropdown-menu" class="dropdown hidden">
+        <div class="dropdown-header">
+          <img src="../assets/anhchandung.jpg" alt="Avatar" />
+          <div>
+            <strong>Rikkei</strong><br/>
+            <small>Phanvandat@gmail.com</small>
+          </div>
+        </div>
+        <a href="#">View profile</a>
+        <a href="#">Update profile picture</a>
+        <a href="#">Change password</a>
+        <a href="http://127.0.0.1:5500/pages/login.html" onclick="logout()">Log out</a>
+      </div>
     </div>
   </header>
 
   <main class="container">
     <h2>Recent Blog Posts</h2>
     <div class="blog-grid" id="blogGrid">
-      <!-- Cards sẽ được tạo động bởi JavaScript -->    
+      <!-- Cards sẽ được tạo động bởi JavaScript -->
     </div>
   </main>
   <footer class="footer">
@@ -107,7 +119,7 @@
 
 <!-- FontAwesome icons -->
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-<script src="../js/index.js"></script>
+<script src="../js/index-signin.js"></script>
    
 </section>
   </div>

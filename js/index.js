@@ -33,19 +33,51 @@ function renderPosts(filteredPosts = posts) {
   blogGrid.innerHTML = "";
 
   filteredPosts.forEach((post) => {
-    blogGrid.innerHTML += `
-      <div class="blog-card">
-        <img src="${post.image}" alt="">
-        <div class="card-content">
-          <span class="date">Date: ${post.date}</span>
-          <h3>${post.title}</h3>
-          <p>${post.content}</p>
-          <span class="tag ${post.tagClass}">${post.tag}</span>
-        </div>
+    const card = document.createElement('div');
+    card.classList.add('blog-card');
+
+    card.innerHTML = `
+      <img src="${post.image}" alt="">
+      <div class="card-content">
+        <span class="date">Date: ${post.date}</span>
+        <h3>${post.title}</h3>
+        <p>${post.content.slice(0, 100)}...</p>
+        <span class="tag ${post.tagClass}">${post.tag}</span>
       </div>
     `;
+
+    card.addEventListener('click', () => {
+      openModal(post);
+    });
+
+    blogGrid.appendChild(card);
   });
 }
+
+function openModal(post) {
+  document.getElementById('modalPostTitle').textContent = post.title;
+  document.getElementById('modalPostContent').textContent = post.content;
+
+  document.getElementById('postModal').style.display = 'flex';
+
+  document.querySelector('.container').classList.add('blur');
+  document.querySelector('header').classList.add('blur');
+  document.querySelector('footer').classList.add('blur');
+}
+
+function closeModal() {
+  document.getElementById('postModal').style.display = 'none';
+
+  document.querySelector('.container').classList.remove('blur');
+  document.querySelector('header').classList.remove('blur');
+  document.querySelector('footer').classList.remove('blur');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderPosts();
+
+  document.getElementById('closeModal').addEventListener('click', closeModal);
+});
 
 function searchPosts() {
   const keyword = document.getElementById("searchInput").value.toLowerCase();
@@ -57,10 +89,12 @@ function searchPosts() {
   renderPosts(filtered);
 }
 
-// Load all posts on start
-renderPosts();
-
-let bloggrird = document.getElementById("blogGrid");
-let postContainer = document.getElementById("post-container");
-bloggrird.addEventListener("click", function (event) {
-postContainer.style.display = "block";});
+// thiết lập sự kiện khi chọn đăng kí-đăng nhập
+let btnsignup = document.querySelector('.btn-signup');
+btnsignup.addEventListener('click', function () {
+  location.href = 'login.html';
+});
+let btnsignin = document.querySelector('.btn-signin');
+btnsignin.addEventListener('click', function () {
+  location.href = 'register.html';
+});
