@@ -1,43 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quản lý bài viết</title>
   <link rel="stylesheet" href="../css/article-manager.css">
+  <style>
+    .add-product-form { display: none; /* ... */ }
+    .active-page { background-color: #007bff; color: #fff; }
+  </style>
 </head>
+
 <body>
-  <div class="container">
-    <header class="header">
-      <h1>Quản lý bài viết</h1>
+  <header class="header">
+    <div class="logo">🔧 Manage</div>
+    <nav class="nav-menu">
+      <a href="http://127.0.0.1:5500/pages/user_manager.html">👤 Người Dùng</a>
+      <a href="http://127.0.0.1:5500/pages/entries_manager.html">📋 Quản Lý Bài Viết</a>
+      <a href="article_manager.html">📄 Quản Lý Bài Viết</a>
+      <a href="http://127.0.0.1:5500/pages/login.html" class="logout">🚪 Đăng Xuất</a>
+    </nav>
+    <div class="search-add">
+      <input type="text" id="search" placeholder="Tìm kiếm bài viết" />
       <button class="add-post-btn" onclick="showAddProductForm()">Thêm mới bài viết</button>
-    </header>
-    
-    <!-- Form thêm sản phẩm -->
-    <div class="add-product-form" id="addProductForm">
-      <h2>Thêm Sản Phẩm Mới</h2>
-      <label for="productTitle">Tiêu đề:</label>
-      <input type="text" id="productTitle" required>
+    </div>
+  </header>
 
-      <label for="productCategory">Chủ đề:</label>
-      <select id="productCategory" required>
+  <div class="container">
+    <!-- Form thêm / sửa -->
+    <div id="addProductForm" class="add-product-form hidden">
+      <h2>Thêm bài viết mới</h2>
+      <label for="productTitle">Tiêu đề</label>
+      <input type="text" id="productTitle" />
 
+      <label for="productCategory">Nhật ký</label>
+      <select id="productCategory"></select>
+
+      <label for="productContent">Nội dung</label>
+      <textarea id="productContent"></textarea>
+
+      <label for="productStatus">Trạng thái</label>
+      <select id="productStatus">
+        <option value="Public">Công khai</option>
+        <option value="Private">Riêng tư</option>
       </select>
 
-      <label for="productContent">Nội dung:</label>
-      <textarea id="productContent" required></textarea>
+      <label for="productImage">Ảnh bài viết</label>
+      <input type="file" id="productImage" accept="image/*" />
 
-      <label for="productStatus">Trạng thái:</label>
-      <select id="productStatus" required>
-        <option value="Public">Public</option>
-        <option value="Private">Private</option>
-      </select>
-
-      <label for="productImage">Ảnh sản phẩm (URL):</label>
-      <input type="text" id="productImage" required>
-
-      <button class="save-btn" onclick="saveNewProduct()">Lưu</button>
-      <button class="cancel-btn" onclick="closeAddProductForm()">Hủy</button>
+      <div style="text-align:right">
+        <button class="save-btn" onclick="saveNewProduct()">Lưu</button>
+        <button class="cancel-btn" onclick="closeAddProductForm()">Hủy</button>
+      </div>
     </div>
 
     <!-- Bảng danh sách sản phẩm -->
@@ -50,7 +64,6 @@
           <th>Nội dung</th>
           <th>Trạng thái</th>
           <th>Chỉnh sửa trạng thái</th>
- 
         </tr>
       </thead>
       <tbody id="post-table-body">
@@ -69,4 +82,4 @@
   <script src="../js/article_manager.js"></script>
   <script src="../js/admin.js"></script>
 </body>
-</html> 
+</html>

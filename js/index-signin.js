@@ -1,147 +1,159 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Lấy danh sách bài viết từ localStorage
-  const articles = JSON.parse(localStorage.getItem('articles')) || [];
+  // Lấy danh sách bài viết và danh mục từ localStorage
+  let articles = JSON.parse(localStorage.getItem('articles')) || [];
+  let categories = JSON.parse(localStorage.getItem('categories')) || [];
   const articlesContainer = document.getElementById('blogGrid');
+  const searchInput = document.getElementById('searchInput');
+  const categorySelect = document.getElementById('categorySelect');
 
-  const article = {
-  title: "Bài viết mẫu",
-  content: "Đây là nội dung bài viết...",
-  comments: [
-    { username: "User1", content: "Bài viết rất hay!" },
-    { username: "User2", content: "Cảm ơn về thông tin hữu ích." }
-  ]
-};
-  // Hiển thị từng bài viết
-  articles.forEach(article => {
-    const articleDiv = document.createElement('div');
-    articleDiv.classList.add('article-card');
-    articleDiv.innerHTML = `
-      <h3>${article.title}</h3>
-      ${article.imageURL ? `<img src="${article.imageURL}" alt="Image" style="height: 30%; width: 30%">` : ''} 
-      <p><strong>Categories : </strong> ${article.category}</p>
-      <p><strong>Mood : </strong> ${article.mood}</p>
-      <p><strong>Content : </strong>${article.content}</p>
-      <p><strong>Status : </strong> ${article.status}</p>
-    `;
-    articlesContainer.appendChild(articleDiv);
-  });
+  // Hiển thị danh mục trong dropdown
+  function populateCategorySelect() {
+      if (!categorySelect) return;
+      categorySelect.innerHTML = '<option value="">Tất cả danh mục</option>';
+      categories.forEach(category => {
+          const option = document.createElement('option');
+          option.value = category.id; // Sử dụng category.id làm giá trị
+          option.textContent = category.name;
+          categorySelect.appendChild(option);
+      });
+  }
 
-
-  // Hiển thị bài viết lên giao diện
+  // Hàm hiển thị bài viết
   function renderPosts(filteredPosts = articles) {
-    const blogGrid = document.getElementById("blogGrid");
-    blogGrid.innerHTML = "";
+      if (!articlesContainer) return;
+      articlesContainer.innerHTML = ''; // Làm trống container
+      if (filteredPosts.length === 0) {
+          articlesContainer.innerHTML = '<p>Không có bài viết nào phù hợp với tìm kiếm.</p>';
+          return;
+      }
 
-    filteredPosts.forEach((post) => {
-      const card = document.createElement('div');
-      card.classList.add('blog-card');
-      card.innerHTML = `
-        <img src="${post.imageURL}" alt=""/>
-        <div class="card-content">
-          <span class="date">Date: ${post.date}</span>
-          <h3>${post.title}</h3>
-          <p>${post.content.slice(0, 100)}...</p>
-          <span class="tag ${post.tagClass}">${post.tag}</span>
-        </div>
-      `;
-      card.addEventListener('click', () => openModal(post));
-      blogGrid.appendChild(card);
-    });
+      filteredPosts.forEach(article => {
+          // Ánh xạ categoryId thành tên danh mục
+          const categoryName = categories.find(cat => cat.id === article.categoryId)?.name || 'Không có danh mục';
+          const articleDiv = document.createElement('div');
+          articleDiv.classList.add('article-card');
+          articleDiv.innerHTML = `
+              <h3>${article.title}</h3>
+              ${article.image ? `<img src="${article.image}" alt="Image" style="height: 30%; width: 30%">` : ''}
+              <p><strong>Danh mục:</strong> ${categoryName}</p>
+              <p><strong>Tâm trạng:</strong> ${article.mood || 'Không có'}</p>
+              <p><strong>Nội dung:</strong> ${article.content.slice(0, 100)}...</p>
+              <p><strong>Trạng thái:</strong> ${article.status}</p>
+              <p><strong>Ngày:</strong> ${article.date}</p>
+          `;
+          articleDiv.addEventListener('click', () => openModal(article));
+          articlesContainer.appendChild(articleDiv);
+      });
+  }
+
+  // Hàm tìm kiếm và lọc bài viết
+  function searchPosts() {
+      const searchValue = searchInput?.value.toLowerCase().trim() || '';
+      const selectedCategoryId = categorySelect?.value || '';
+
+      const filteredArticles = articles.filter(article => {
+          const categoryName = categories.find(cat => cat.id === article.categoryId)?.name.toLowerCase() || '';
+          const matchesCategory = selectedCategoryId ? article.categoryId === parseInt(selectedCategoryId) : true;
+          const matchesSearch = article.title.toLowerCase().includes(searchValue) ||
+                               categoryName.includes(searchValue) ||
+                               article.content.toLowerCase().includes(searchValue);
+          return matchesCategory && matchesSearch;
+      });
+
+      renderPosts(filteredArticles);
   }
 
   // Mở modal khi click vào bài viết
   function openModal(post) {
-    document.getElementById('modalPostTitle').textContent = post.title;
-    document.getElementById('modalPostContent').textContent = post.content;
+      const modal = document.getElementById('postModal');
+      if (!modal) return;
 
-    // Xóa các bình luận cũ
-    const commentsSection = document.getElementById('commentsSection');
-    commentsSection.innerHTML = ''; 
+      document.getElementById('modalPostTitle').textContent = post.title;
+      document.getElementById('modalPostContent').textContent = post.content;
 
-    // Hiển thị bình luận nếu có
-    if (post.comments && post.comments.length > 0) {
-      post.comments.forEach(comment => {
-        const commentDiv = document.createElement('div');
-        commentDiv.classList.add('comment');
-        commentDiv.innerHTML = `<p><strong>${comment.username}:</strong> ${comment.content}</p>`;
-        commentsSection.appendChild(commentDiv);
-      });
-    } else {
-      commentsSection.innerHTML = '<p>Chưa có bình luận nào</p>';
-    }
+      // Hiển thị bình luận
+      const commentsSection = document.getElementById('commentsSection');
+      if (commentsSection) {
+          commentsSection.innerHTML = '';
+          if (post.comments && post.comments.length > 0) {
+              post.comments.forEach(comment => {
+                  const commentDiv = document.createElement('div');
+                  commentDiv.classList.add('comment');
+                  commentDiv.innerHTML = `<p><strong>${comment.username}:</strong> ${comment.content}</p>`;
+                  commentsSection.appendChild(commentDiv);
+              });
+          } else {
+              commentsSection.innerHTML = '<p>Chưa có bình luận nào</p>';
+          }
+          commentsSection.style.display = 'block';
+      }
 
-    // Ẩn liên kết "Xem tất cả bình luận" và hiển thị phần bình luận
-    document.getElementById('viewCommentsLink').style.display = 'none';
-    commentsSection.style.display = 'block';
+      // Ẩn liên kết "Xem tất cả bình luận" nếu có
+      const viewCommentsLink = document.getElementById('viewCommentsLink');
+      if (viewCommentsLink) viewCommentsLink.style.display = 'none';
 
-    document.getElementById('postModal').style.display = 'flex';
-    document.querySelector('.container').classList.add('blur');
-    document.querySelector('header').classList.add('blur');
-    document.querySelector('footer').classList.add('blur');
+      modal.style.display = 'flex';
+      document.querySelector('.container')?.classList.add('blur');
+      document.querySelector('header')?.classList.add('blur');
+      document.querySelector('footer')?.classList.add('blur');
   }
 
   // Đóng modal
   function closeModal() {
-    document.getElementById('postModal').style.display = 'none';
-
-    document.querySelector('.container').classList.remove('blur');
-    document.querySelector('header').classList.remove('blur');
-    document.querySelector('footer').classList.remove('blur');
+      const modal = document.getElementById('postModal');
+      if (!modal) return;
+      modal.style.display = 'none';
+      document.querySelector('.container')?.classList.remove('blur');
+      document.querySelector('header')?.classList.remove('blur');
+      document.querySelector('footer')?.classList.remove('blur');
   }
-
-  // Bắt sự kiện đóng modal
-  document.getElementById('closeModal').addEventListener('click', closeModal);
 
   // Tính năng bấm vào icon profile
-  let profile = document.getElementById("profile-icon");
-  let dropdownMenu = document.getElementById("dropdown-menu");
+  function setupProfileDropdown() {
+      const profile = document.getElementById('profile-icon');
+      const dropdownMenu = document.getElementById('dropdown-menu');
+      if (!profile || !dropdownMenu) return;
 
-  profile.addEventListener("click", function () {
-    dropdownMenu.classList.toggle("hidden");
-  });
+      profile.addEventListener('click', function() {
+          dropdownMenu.classList.toggle('hidden');
+      });
 
-  // Ẩn dropdown nếu click ra ngoài
-  document.addEventListener("click", function (e) {
-    if (!dropdownMenu.contains(e.target) && !profile.contains(e.target)) {
-      dropdownMenu.classList.add("hidden");
-    }
-  });
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-  const articles = JSON.parse(localStorage.getItem('articles')) || [];
-  const categories = JSON.parse(localStorage.getItem('categories')) || [];
-  const articlesContainer = document.getElementById('blogGrid');
-  const categorySelect = document.getElementById('categorySelect');
-
-  // Hiển thị danh mục trong dropdown
-  categories.forEach(category => {
-    const option = document.createElement('option');
-    option.value = category.id;
-    option.textContent = category.name;
-    categorySelect.appendChild(option);
-  });
-
-  // Hiển thị bài viết
-  function renderPosts(filteredPosts = articles) {
-    articlesContainer.innerHTML = '';
-    filteredPosts.forEach(article => {
-      const articleDiv = document.createElement('div');
-      articleDiv.classList.add('article-card');
-      articleDiv.innerHTML = `
-        <h3>${article.title}</h3>
-        ${article.imageURL ? `<img src="${article.imageURL}" alt="Image" style="height: 30%; width: 30%">` : ''} 
-        <p><strong>Categories : </strong> ${article.category}</p>
-        <p><strong>Mood : </strong> ${article.mood}</p>
-        <p><strong>Content : </strong>${article.content}</p>
-        <p><strong>Status : </strong> ${article.status}</p>
-      `;
-      articlesContainer.appendChild(articleDiv);
-    });
+      document.addEventListener('click', function(e) {
+          if (!dropdownMenu.contains(e.target) && !profile.contains(e.target)) {
+              dropdownMenu.classList.add('hidden');
+          }
+      });
   }
-  // Thực hiện tìm kiếm mỗi khi người dùng nhập từ khóa hoặc chọn category
-  document.getElementById("searchInput").addEventListener("input", searchPosts);
-  document.getElementById("categorySelect").addEventListener("change", searchPosts);
 
-  renderPosts(articles); // Hiển thị các bài viết khi tải trang
+  // Lắng nghe sự kiện
+  if (searchInput) searchInput.addEventListener('input', searchPosts);
+  if (categorySelect) categorySelect.addEventListener('change', searchPosts);
+  const closeModalBtn = document.getElementById('closeModal');
+  if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+
+  // Tự động cập nhật khi localStorage thay đổi
+  window.addEventListener('storage', (event) => {
+      if (event.key === 'articles') {
+          articles = JSON.parse(event.newValue) || [];
+          renderPosts();
+      }
+      if (event.key === 'categories') {
+          categories = JSON.parse(event.newValue) || [];
+          populateCategorySelect();
+          renderPosts();
+      }
+  });
+
+  // Tải lại dữ liệu khi trang được focus
+  window.addEventListener('focus', () => {
+      articles = JSON.parse(localStorage.getItem('articles')) || [];
+      categories = JSON.parse(localStorage.getItem('categories')) || [];
+      populateCategorySelect();
+      renderPosts();
+  });
+
+  // Khởi tạo
+  populateCategorySelect();
+  renderPosts();
+  setupProfileDropdown();
 });

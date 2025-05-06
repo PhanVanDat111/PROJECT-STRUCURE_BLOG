@@ -1,54 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Manage Categories</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quản Lý Danh Mục</title>
   <link rel="stylesheet" href="../css/entries_manager.css" />
 </head>
 <body>
-  <div class="container">
-    <aside class="sidebar">
-      <h2 class="logo">🔧 Manage</h2>
-      <nav>
-        <a href="http://127.0.0.1:5500/pages/user_manager.html">👤 Users</a>
-        <a href="http://127.0.0.1:5500/pages/entries_manager.html">📋 Manage Entries</a>
-        <a href="article_manager.html">📄 Manage Articles</a>
-        <a href="#" class="logout" onclick="logout()">🚪 Log out</a>
-      </nav>
-    </aside>
+  <header class="header">
+    <div class="logo">🔧 Manage</div>
+    <nav class="nav-menu">
+      <a href="http://127.0.0.1:5500/pages/user_manager.html">👤 Người Dùng</a>
+      <a href="http://127.0.0.1:5500/pages/entries_manager.html">📋 Quản Lý Bài Viết</a>
+      <a href="article_manager.html">📄 Quản Lý Bài Viết</a>
+      <a href="#" class="logout" onclick="logout()">🚪 Đăng Xuất</a>
+    </nav>
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="Tìm Kiếm Danh Mục Bài Viết" oninput="searchData()" />
+    </div>
+  </header>
 
-    <main class="main-content">
-      <div class="search-bar">
-        <input type="text" id="search-input" placeholder="Search Article Categories" oninput="searchData()"/>
+  <main class="main-content">
+    <section class="category-management">
+      <h1>⚙️ Quản Lý Danh Mục</h1>
+      <div class="form-group">
+        <label for="categoryName">Tên Danh Mục</label>
+        <input type="text" id="categoryName" placeholder="Nhập tên danh mục" />
+        <button class="add-btn" onclick="addCategory()">Thêm Danh Mục</button>
       </div>
 
-      <section class="category-management">
-        <h1>⚙️ Manage Categories</h1>
-        <div class="form-group">
-          <label for="categoryName">Category Name</label>
-          <input type="text" id="categoryName" placeholder="Enter category name" />
-          <button class="add-btn" onclick="addCategory()">Add Category</button>
-        </div>
+      <div class="category-list">
+        <h2>📋 Danh Sách Danh Mục</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Tên Danh Mục</th>
+              <th>Hành Động</th>
+            </tr>
+          </thead>
+          <tbody id="category-table-body">
+            <!-- Danh mục sẽ được hiển thị ở đây -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
 
-        <div class="category-list">
-          <h2>📋 Category List</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Category Name</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody id="category-table-body">
-              <!-- Categories will be displayed here -->
-            </tbody>
-          </table>
-        </div>
-      </section>
-    </main>
-  </div>
   <script src="../js/entries_manager.js"></script>
   <script src="../js/admin.js"></script>
 </body>

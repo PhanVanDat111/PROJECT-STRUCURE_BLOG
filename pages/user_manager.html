@@ -1,43 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>User Management</title>
+  <title>Quản Lý Người Dùng</title>
   <link rel="stylesheet" href="../css/user_manager.css" />
 </head>
 
 <body>
-  <div class="container">
-    <header>
-      <h1>Team Members</h1>
-      <div class="search-add">
-        <input type="text" id="search" placeholder="Search user" />
-        <img src="../assets/anhchandung.jpg" id="profile-icon" alt="User Avatar" class="avatar" />
-        <div id="dropdown-menu" class="dropdown hidden">
-          <div class="dropdown-header">
-            <img src="../assets/anhchandung.jpg" alt="Avatar" />
-            <div>
-              <strong>Rikkei</strong><br />
-              <small>admin@gmai.com</small>
-            </div>
+  <header class="header">
+    <div class="logo">🔧 Manage</div>
+    <nav class="nav-menu">
+      <a href="http://127.0.0.1:5500/pages/user_manager.html">👤 Người Dùng</a>
+      <a href="http://127.0.0.1:5500/pages/entries_manager.html">📋 Quản Lý Bài Viết</a>
+      <a href="article_manager.html">📄 Quản Lý Bài Viết</a>
+      <a href="http://127.0.0.1:5500/pages/login.html" class="logout">🚪 Đăng Xuất</a>
+    </nav>
+    <div class="search-add">
+      <input type="text" id="search" placeholder="Tìm kiếm người dùng" oninput="searchUsers()" />
+      <img src="../assets/anhchandung.jpg" id="profile-icon" alt="Hình đại diện người dùng" class="avatar" />
+      <div id="dropdown-menu" class="dropdown hidden">
+        <div class="dropdown-header">
+          <img src="../assets/anhchandung.jpg" alt="Hình đại diện" />
+          <div>
+            <strong>Rikkei</strong><br />
+            <small>admin@gmai.com</small>
           </div>
-          <a href="#">View profile</a>
-          <a href="#">Update profile picture</a>
-          <a href="#">Change password</a>
-          <a href="http://127.0.0.1:5500/pages/login.html">Log out</a>
         </div>
+        <a href="#">Xem hồ sơ</a>
+        <a href="#">Cập nhật ảnh đại diện</a>
+        <a href="#">Đổi mật khẩu</a>
+        <a href="http://127.0.0.1:5500/pages/login.html">Đăng xuất</a>
       </div>
-    </header>
+    </div>
+  </header>
 
+  <div class="container">
+    <h1>Thành Viên Đội Nhóm</h1>
     <table>
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Status</th>
+          <th>Tên</th>
+          <th>Trạng Thái</th>
           <th>Email</th>
-          <th>Actions</th>
+          <th>Hành Động</th>
         </tr>
       </thead>
       <tbody id="userTable"></tbody>
@@ -49,5 +55,4 @@
   <script src="../js/user_manager.js"></script>
   <script src="../js/admin.js"></script>
 </body>
-
 </html>

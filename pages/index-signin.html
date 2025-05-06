@@ -14,27 +14,15 @@
         <span>RIKKEI_EDU_BLOG</span>
       </div>
       <div class="linkadd"><a href="http://127.0.0.1:5500/pages/add-article.html"> Thêm Bài Viết</a></div>
-      <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search for articles">
-        <button class="search-btn" onclick="searchPosts()">
-          <i class="fa fa-search"></i>
-        </button>
-      </div>
+      <!-- Lọc theo chủ đề -->
+<div class="filter-container">
+  <select id="categorySelect" class="categorySelect">
+    <option value="">Tất cả chủ đề</option>
+    <!-- Các tùy chọn chủ đề sẽ được thêm từ JavaScript -->
+  </select>
+</div>
       <div class="user-menu">
-        <img src="../assets/anhchandung.jpg" id="profile-icon" alt="User Avatar" class="avatar"/>
-        <div id="dropdown-menu" class="dropdown hidden">
-          <div class="dropdown-header">
-            <img src="../assets/anhchandung.jpg" alt="Avatar" />
-            <div>
-              <strong>Rikkei</strong><br/>
-              <small>Phanvandat@gmail.com</small>
-            </div>
-          </div>
-          <a href="#">View profile</a>
-          <a href="#">Update profile picture</a>
-          <a href="#">Change password</a>
-          <a href="http://127.0.0.1:5500/pages/login.html" onclick="logout()">Log out</a>
-        </div>
+        <button onclick="logout()">LOG OUT <i class="fa-solid fa-arrow-right-from-bracket"></i>  </button>
       </div>
     </header>
 
@@ -114,10 +102,6 @@
       </div>
     </div>
   </div>
-
-  
-
-
   <!-- FontAwesome icons -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <script src="../js/index-signin.js"></script>

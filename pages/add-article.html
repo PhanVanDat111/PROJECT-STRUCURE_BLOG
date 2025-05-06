@@ -11,36 +11,36 @@
     <h1>Add New Article</h1>
 
     <form class="article-form">
-      <label for="title">Title:</label>
-      <input type="text" id="title" placeholder="Enter article title" required>
-
+      <label for="title">Tiêu đề:</label>
+      <input type="text" id="title" placeholder="Nhập tiêu đề bài viết" required>
+    
       <label for="productCategory">Chủ đề:</label>
       <select id="productCategory" required>
+        <!-- Danh mục sẽ được điền tự động từ localStorage -->
       </select>
-
-      <label for="mood">Mood:</label>
+    
+      <label for="mood">Trạng thái cảm xúc:</label>
       <select id="mood" required>
-        <option value="happy">Happy</option>
-        <option value="neutral">Neutral</option>
-        <option value="sad">Sad</option>
+        <option value="happy">Vui vẻ</option>
+        <option value="neutral">Trung lập</option>
+        <option value="sad">Buồn</option>
       </select>
-
-      <label for="content">Content:</label>
-      <textarea id="content" rows="6" placeholder="Write your content here" required></textarea>
-
-      <label for="status">Status:</label>
+    
+      <label for="content">Nội dung:</label>
+      <textarea id="content" rows="6" placeholder="Viết nội dung bài viết" required></textarea>
+    
+      <label for="status">Trạng thái:</label>
       <div class="status-options">
         <input type="radio" id="public" name="status" value="public" required>
-        <label for="public">Public</label>
+        <label for="public">Công khai</label>
         <input type="radio" id="private" name="status" value="private">
-        <label for="private">Private</label>
+        <label for="private">Riêng tư</label>
       </div>
-
-      <label for="file-upload">Upload Image:</label>
+    
+      <label for="file-upload">Tải ảnh lên:</label>
       <input type="file" id="file-upload" class="file-upload">
-
-      <button type="submit" class="submit-btn">Add</button>
-    </form>
+    
+      <button type="submit" class="submit-btn">Thêm bài viết</button> 
   </div>
 
   <script src="script.js"></script>
@@ -48,3 +48,4 @@
   <script src="../js/admin.js"></script>
 </body>
 </html>
+  
