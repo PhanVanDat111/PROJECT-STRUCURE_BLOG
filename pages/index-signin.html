@@ -1,113 +1,104 @@
-  <!DOCTYPE html>
-  <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Rikkei Blog</title>
-    <link rel="stylesheet" href="../css/index-signin.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  </head>
-  <body>
-    <header class="header">
-      <div class="logo">
-        <i class="fa-solid fa-book"></i>
-        <span>RIKKEI_EDU_BLOG</span>
-      </div>
-      <div class="linkadd"><a href="http://127.0.0.1:5500/pages/add-article.html"> Thêm Bài Viết</a></div>
-      <!-- Lọc theo chủ đề -->
-<div class="filter-container">
-  <select id="categorySelect" class="categorySelect">
-    <option value="">Tất cả chủ đề</option>
-    <!-- Các tùy chọn chủ đề sẽ được thêm từ JavaScript -->
-  </select>
-</div>
-      <div class="user-menu">
-        <button onclick="logout()">LOG OUT <i class="fa-solid fa-arrow-right-from-bracket"></i>  </button>
-      </div>
-    </header>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rikkei Blog</title>
+  <link rel="stylesheet" href="../css/index-signin.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <i class="fa-solid fa-book"></i>
+      <span>RIKKEI_EDU_BLOG</span>
+    </div>
+    <div class="linkadd"><a href="http://127.0.0.1:5500/pages/add-article.html">Thêm Bài Viết</a></div>
+    <div class="filter-container">
+      <select id="categorySelect" class="categorySelect">
+        <option value="">Tất cả chủ đề</option>
+      </select>
+    </div>
+    <div class="user-menu">
+      <button onclick="logout()">ĐĂNG XUẤT <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+    </div>
+  </header>
 
-    <main class="container">
-      <h2>Recent Blog Posts</h2>
-      <div class="blog-grid" id="blogGrid">
-        <!-- Cards sẽ được tạo động bởi JavaScript -->
+  <main class="container">
+    <h2>Bài Viết Gần Đây</h2>
+    <div class="blog-grid" id="blogGrid">
+      <!-- Cards sẽ được tạo động bởi JavaScript -->
+    </div>
+    <!-- Phân trang sẽ được thêm động bởi JavaScript -->
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section logo-about">
+        <h2 class="logo">MY BLOG</h2>
+        <h4>About<br><span>Rareblocks</span></h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+          Nullam dictum aliquet accumsan porta lectus ridiculus in mattis. 
+          Netus sodales in volutpat ullamcorper amet adipiscing fermentum.</p>
+        <div class="social-icons">
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-github"></i></a>
+        </div>
       </div>
-    </main>
-    <footer class="footer">
-      <div class="footer-container">
-          <div class="footer-section logo-about">
-              <h2 class="logo">MY BLOG</h2>
-              <h4>About<br><span>Rareblocks</span></h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                  Nullam dictum aliquet accumsan porta lectus ridiculus in mattis. 
-                  Netus sodales in volutpat ullamcorper amet adipiscing fermentum.</p>
-              <div class="social-icons">
-                  <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                  <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                  <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                  <a href="#"><i class="fa-brands fa-github"></i></a>
-              </div>
-          </div>
-
-          <div class="footer-section">
-              <h4>Company</h4>
-              <ul>
-                  <li><a href="#">About</a></li>
-                  <li><a href="#">Features</a></li>
-                  <li><a href="#">Works</a></li>
-                  <li><a href="#">Career</a></li>
-              </ul>
-          </div>
-
-          <div class="footer-section">
-              <h4>Help</h4>
-              <ul>
-                  <li><a href="#">Customer Support</a></li>
-                  <li><a href="#">Delivery Details</a></li>
-                  <li><a href="#">Terms & Conditions</a></li>
-                  <li><a href="#">Privacy Policy</a></li>
-              </ul>
-          </div>
-
-          <div class="footer-section">
-              <h4>Resources</h4>
-              <ul>
-                  <li><a href="#">Free eBooks</a></li>
-                  <li><a href="#">Development Tutorial</a></li>
-                  <li><a href="#">How to - Blog</a></li>
-                  <li><a href="#">Youtube Playlist</a></li>
-              </ul>
-          </div>
+      <div class="footer-section">
+        <h4>Công Ty</h4>
+        <ul>
+          <li><a href="#">Giới Thiệu</a></li>
+          <li><a href="#">Tính Năng</a></li>
+          <li><a href="#">Dự Án</a></li>
+          <li><a href="#">Tuyển Dụng</a></li>
+        </ul>
       </div>
+      <div class="footer-section">
+        <h4>Hỗ Trợ</h4>
+        <ul>
+          <li><a href="#">Hỗ Trợ Khách Hàng</a></li>
+          <li><a href="#">Chi Tiết Giao Hàng</a></li>
+          <li><a href="#">Điều Khoản & Điều Kiện</a></li>
+          <li><a href="#">Chính Sách Bảo Mật</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Tài Nguyên</h4>
+        <ul>
+          <li><a href="#">Sách Điện Tử Miễn Phí</a></li>
+          <li><a href="#">Hướng Dẫn Phát Triển</a></li>
+          <li><a href="#">Blog Hướng Dẫn</a></li>
+          <li><a href="#">Danh Sách Phát Youtube</a></li>
+        </ul>
+      </div>
+    </div>
   </footer>
+
   <!-- Popup Modal for Post Detail -->
   <div class="modal" id="postModal">
     <div class="modal-content">
-      <span class="close-button" id="closeModal">&times;</span>
+      <span class="close-button" id="closeModal">×</span>
       <h1 id="modalPostTitle">Tiêu đề bài viết</h1>
       <p id="modalPostContent">Nội dung bài viết sẽ hiển thị ở đây...</p>
-      
       <div class="post-stats">
-        <span><i class="fa-regular fa-thumbs-up"></i> 15 Like</span>
+        <span><i class="fa-regular fa-thumbs-up"></i> 15 Thích</span>
         <span><i class="fa-regular fa-comment"></i> 6 Bình luận</span>
       </div>
-
-      <!-- Phần này sẽ chứa liên kết "View Comments" -->
       <div class="view-comments" id="viewCommentsLink">
         <a href="#">Xem tất cả bình luận</a>
       </div>
-
-      <!-- Phần Bình luận (Ban đầu ẩn) -->
       <div class="comments" id="commentsSection" style="display: none;">
         <!-- Các bình luận sẽ được điền vào đây -->
       </div>
     </div>
   </div>
+
   <!-- FontAwesome icons -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <script src="../js/index-signin.js"></script>
   <script src="../js/admin.js"></script>
-  </section>
-    </div>
-  </body>
-  </html>
-    
+</body>
+</html>
