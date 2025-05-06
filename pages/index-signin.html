@@ -1,128 +1,129 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Rikkei Blog</title>
-  <link rel="stylesheet" href="../css/index-signin.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-</head>
-<body>
-  <header class="header">
-    <div class="logo">
-      <i class="fa-solid fa-book"></i>
-      <span>RIKKEI_EDU_BLOG</span>
-    </div>
-    <div class="search-container">
-      <input type="text" id="searchInput" placeholder="Search for articles">
-      <button class="search-btn" onclick="searchPosts()">
-        <i class="fa fa-search"></i>
-      </button>
-    </div>
-    <div class="user-menu">
-      <img src="../assets/anhchandung.jpg" id="profile-icon" alt="User Avatar" class="avatar"/>
-      <div id="dropdown-menu" class="dropdown hidden">
-        <div class="dropdown-header">
-          <img src="../assets/anhchandung.jpg" alt="Avatar" />
-          <div>
-            <strong>Rikkei</strong><br/>
-            <small>Phanvandat@gmail.com</small>
-          </div>
-        </div>
-        <a href="#">View profile</a>
-        <a href="#">Update profile picture</a>
-        <a href="#">Change password</a>
-        <a href="http://127.0.0.1:5500/pages/login.html" onclick="logout()">Log out</a>
+  <!DOCTYPE html>
+  <html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Rikkei Blog</title>
+    <link rel="stylesheet" href="../css/index-signin.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">
+        <i class="fa-solid fa-book"></i>
+        <span>RIKKEI_EDU_BLOG</span>
       </div>
-    </div>
-  </header>
-
-  <main class="container">
-    <h2>Recent Blog Posts</h2>
-    <div class="blog-grid" id="blogGrid">
-      <!-- Cards sẽ được tạo động bởi JavaScript -->
-    </div>
-  </main>
-  <footer class="footer">
-    <div class="footer-container">
-        <div class="footer-section logo-about">
-            <h2 class="logo">MY BLOG</h2>
-            <h4>About<br><span>Rareblocks</span></h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                Nullam dictum aliquet accumsan porta lectus ridiculus in mattis. 
-                Netus sodales in volutpat ullamcorper amet adipiscing fermentum.</p>
-            <div class="social-icons">
-                <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#"><i class="fa-brands fa-github"></i></a>
+      <div class="linkadd"><a href="http://127.0.0.1:5500/pages/add-article.html"> Thêm Bài Viết</a></div>
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search for articles">
+        <button class="search-btn" onclick="searchPosts()">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+      <div class="user-menu">
+        <img src="../assets/anhchandung.jpg" id="profile-icon" alt="User Avatar" class="avatar"/>
+        <div id="dropdown-menu" class="dropdown hidden">
+          <div class="dropdown-header">
+            <img src="../assets/anhchandung.jpg" alt="Avatar" />
+            <div>
+              <strong>Rikkei</strong><br/>
+              <small>Phanvandat@gmail.com</small>
             </div>
+          </div>
+          <a href="#">View profile</a>
+          <a href="#">Update profile picture</a>
+          <a href="#">Change password</a>
+          <a href="http://127.0.0.1:5500/pages/login.html" onclick="logout()">Log out</a>
         </div>
-
-        <div class="footer-section">
-            <h4>Company</h4>
-            <ul>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Features</a></li>
-                <li><a href="#">Works</a></li>
-                <li><a href="#">Career</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-section">
-            <h4>Help</h4>
-            <ul>
-                <li><a href="#">Customer Support</a></li>
-                <li><a href="#">Delivery Details</a></li>
-                <li><a href="#">Terms & Conditions</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-section">
-            <h4>Resources</h4>
-            <ul>
-                <li><a href="#">Free eBooks</a></li>
-                <li><a href="#">Development Tutorial</a></li>
-                <li><a href="#">How to - Blog</a></li>
-                <li><a href="#">Youtube Playlist</a></li>
-            </ul>
-        </div>
-    </div>
-</footer>
-<!-- Popup Modal for Post Detail -->
-<div class="modal" id="postModal">
-  <div class="modal-content">
-    <span class="close-button" id="closeModal">&times;</span>
-    <h1 id="modalPostTitle">Post Title</h1>
-    <p id="modalPostContent">Post content will appear here...</p>
-    
-    <div class="post-stats">
-      <span><i class="fa-regular fa-thumbs-up"></i> 15 Like</span>
-      <span><i class="fa-regular fa-comment"></i> 6 Replies</span>
-    </div>
-
-    <div class="view-comments">
-      <a href="#">View all 12 comments</a>
-    </div>
-
-    <div class="comments">
-      <div class="comment">
-        <p><strong>Username1:</strong> Very good!</p>
       </div>
-      <div class="comment">
-        <p><strong>Username2:</strong> Hello Rikkei!</p>
+    </header>
+
+    <main class="container">
+      <h2>Recent Blog Posts</h2>
+      <div class="blog-grid" id="blogGrid">
+        <!-- Cards sẽ được tạo động bởi JavaScript -->
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footer-container">
+          <div class="footer-section logo-about">
+              <h2 class="logo">MY BLOG</h2>
+              <h4>About<br><span>Rareblocks</span></h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                  Nullam dictum aliquet accumsan porta lectus ridiculus in mattis. 
+                  Netus sodales in volutpat ullamcorper amet adipiscing fermentum.</p>
+              <div class="social-icons">
+                  <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                  <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                  <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                  <a href="#"><i class="fa-brands fa-github"></i></a>
+              </div>
+          </div>
+
+          <div class="footer-section">
+              <h4>Company</h4>
+              <ul>
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">Features</a></li>
+                  <li><a href="#">Works</a></li>
+                  <li><a href="#">Career</a></li>
+              </ul>
+          </div>
+
+          <div class="footer-section">
+              <h4>Help</h4>
+              <ul>
+                  <li><a href="#">Customer Support</a></li>
+                  <li><a href="#">Delivery Details</a></li>
+                  <li><a href="#">Terms & Conditions</a></li>
+                  <li><a href="#">Privacy Policy</a></li>
+              </ul>
+          </div>
+
+          <div class="footer-section">
+              <h4>Resources</h4>
+              <ul>
+                  <li><a href="#">Free eBooks</a></li>
+                  <li><a href="#">Development Tutorial</a></li>
+                  <li><a href="#">How to - Blog</a></li>
+                  <li><a href="#">Youtube Playlist</a></li>
+              </ul>
+          </div>
+      </div>
+  </footer>
+  <!-- Popup Modal for Post Detail -->
+  <div class="modal" id="postModal">
+    <div class="modal-content">
+      <span class="close-button" id="closeModal">&times;</span>
+      <h1 id="modalPostTitle">Tiêu đề bài viết</h1>
+      <p id="modalPostContent">Nội dung bài viết sẽ hiển thị ở đây...</p>
+      
+      <div class="post-stats">
+        <span><i class="fa-regular fa-thumbs-up"></i> 15 Like</span>
+        <span><i class="fa-regular fa-comment"></i> 6 Bình luận</span>
+      </div>
+
+      <!-- Phần này sẽ chứa liên kết "View Comments" -->
+      <div class="view-comments" id="viewCommentsLink">
+        <a href="#">Xem tất cả bình luận</a>
+      </div>
+
+      <!-- Phần Bình luận (Ban đầu ẩn) -->
+      <div class="comments" id="commentsSection" style="display: none;">
+        <!-- Các bình luận sẽ được điền vào đây -->
       </div>
     </div>
   </div>
-</div>
 
-<!-- FontAwesome icons -->
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-<script src="../js/index-signin.js"></script>
-<script src="../js/admin.js"></script>
-</section>
-  </div>
-</body>
-</html>
   
+
+
+  <!-- FontAwesome icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script src="../js/index-signin.js"></script>
+  <script src="../js/admin.js"></script>
+  </section>
+    </div>
+  </body>
+  </html>
+    

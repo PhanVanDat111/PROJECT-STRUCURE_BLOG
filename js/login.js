@@ -40,3 +40,10 @@ loginbutton.addEventListener("click", function (event) {
     alert("Tên đăng nhập hoặc mật khẩu không đúng. Vui lòng kiểm tra lại.");
   }
 });
+
+// Mở modal bằng JS
+let myModal = new bootstrap.Modal(document.getElementById('myModal'));
+myModal.show();
+
+// Đóng modal
+myModal.hide();
